@@ -1,0 +1,41 @@
+//
+//  PrefixHeader.pch
+//  WebApp
+//
+//  Created by mars mars on 12/6/2017.
+//  Copyright © 2017 mars. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define kkScrreenRate (640/320)
+
+// 创建weak弱类型引用weakSelf   使用：kkWeakSelf(me) 后： me 即是 self的弱类型引用
+#define kkWeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+
+#pragma mark - NSLog打印判断测试和生产
+/**
+ *定义常用宏
+ *NSLog
+ *release模式通常会定义 __OPTIMIZE__，当然debug模式不会
+ **/
+// Debug模式下允许打印，Release模式打印函数无效
+#ifndef __OPTIMIZE__ //测试
+# define NSLog(...) NSLog(__VA_ARGS__)
+# define NSLogE(FORMAT, ...) fprintf(stderr,"\nfunction:%s line:%d content:%s\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else // 生产
+# define NSLog(...) {}
+# define NSLogE(...) {}
+#endif
+
+#pragma mark - 生产测试包含头文件
+#ifndef __OPTIMIZE__ //测试
+#else //生产
+#endif
+
+#endif /* PrefixHeader_pch */
