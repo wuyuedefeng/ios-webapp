@@ -11,12 +11,11 @@
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
-#define kkScrreenRate (640/320)
+#import "UIKit/UIKit.h"
+#import "SWCrashReport.h"
 
 // 创建weak弱类型引用weakSelf   使用：kkWeakSelf(me) 后： me 即是 self的弱类型引用
 #define kkWeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
-
 
 #pragma mark - NSLog打印判断测试和生产
 /**
@@ -36,6 +35,53 @@
 #pragma mark - 生产测试包含头文件
 #ifndef __OPTIMIZE__ //测试
 #else //生产
+#endif
+
+# pragma - mark 严格单例
+///// 严格单例
+#if __has_feature(objc_arc)
+#define kSWStrictSingletonForClass(__CLASS_NAME__) \
+static __CLASS_NAME__ *shared##__CLASS_NAME__ = nil;\
++ (__CLASS_NAME__ *)shared##__CLASS_NAME__ {\
+static dispatch_once_t onceToken;\
+dispatch_once(&onceToken, ^{\
+shared##__CLASS_NAME__ = [[super allocWithZone:NULL] init];\
+});\
+return shared##__CLASS_NAME__;\
+}\
++ (id)allocWithZone:(NSZone *)zone {\
+return [__CLASS_NAME__ shared##__CLASS_NAME__];\
+}\
+- (id)copyWithZone:(NSZone *)zone {\
+return self;\
+}
+#else
+#define kSWStrictSingletonForClass(__CLASS_NAME__) \
+static __CLASS_NAME__ *shared##__CLASS_NAME__ = nil;\
++ (__CLASS_NAME__ *)shared##__CLASS_NAME__ {\
+static dispatch_once_t onceToken;\
+dispatch_once(&onceToken, ^{\
+shared##__CLASS_NAME__ = [[super allocWithZone:NULL] init];\
+});\
+return shared##__CLASS_NAME__;\
+}\
++ (id)allocWithZone:(NSZone *)zone {\
+return [__CLASS_NAME__ shared##__CLASS_NAME__];\
+}\
+- (id)copyWithZone:(NSZone *)zone {\
+return self;\
+}\
+- (id)retain {\
+return self;\
+}\
+- (NSUInteger)retainCount {\
+return NSUIntegerMax;\
+}\
+- (oneway void)release {\
+}\
+- (id)autorelease {\
+return self;\
+}
 #endif
 
 #endif /* PrefixHeader_pch */

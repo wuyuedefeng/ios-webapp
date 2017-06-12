@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 注册程序崩溃获取
+    [SWCrashReport registerCrashReport];
+    
     return YES;
 }
 

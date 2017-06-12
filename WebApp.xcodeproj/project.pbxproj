@@ -13,6 +13,7 @@
 		419840731EEEE6B300D21182 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419840711EEEE6B300D21182 /* Main.storyboard */; };
 		419840751EEEE6B300D21182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419840741EEEE6B300D21182 /* Assets.xcassets */; };
 		419840781EEEE6B300D21182 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419840761EEEE6B300D21182 /* LaunchScreen.storyboard */; };
+		419840991EEFBCD400D21182 /* SWCrashReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 419840981EEFBCD400D21182 /* SWCrashReport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		419840771EEEE6B300D21182 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		419840791EEEE6B300D21182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4198407F1EEEE8BF00D21182 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		419840971EEFBCD400D21182 /* SWCrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCrashReport.h; sourceTree = "<group>"; };
+		419840981EEFBCD400D21182 /* SWCrashReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCrashReport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 		419840671EEEE6B300D21182 /* WebApp */ = {
 			isa = PBXGroup;
 			children = (
+				419840941EEFBCD400D21182 /* libs */,
 				4198406B1EEEE6B300D21182 /* AppDelegate.h */,
 				4198406C1EEEE6B300D21182 /* AppDelegate.m */,
 				4198406E1EEEE6B300D21182 /* ViewController.h */,
@@ -79,6 +83,31 @@
 				4198407F1EEEE8BF00D21182 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		419840941EEFBCD400D21182 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				419840951EEFBCD400D21182 /* funcs */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		419840951EEFBCD400D21182 /* funcs */ = {
+			isa = PBXGroup;
+			children = (
+				419840961EEFBCD400D21182 /* crashReport */,
+			);
+			path = funcs;
+			sourceTree = "<group>";
+		};
+		419840961EEFBCD400D21182 /* crashReport */ = {
+			isa = PBXGroup;
+			children = (
+				419840971EEFBCD400D21182 /* SWCrashReport.h */,
+				419840981EEFBCD400D21182 /* SWCrashReport.m */,
+			);
+			path = crashReport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				419840701EEEE6B300D21182 /* ViewController.m in Sources */,
+				419840991EEFBCD400D21182 /* SWCrashReport.m in Sources */,
 				4198406D1EEEE6B300D21182 /* AppDelegate.m in Sources */,
 				4198406A1EEEE6B300D21182 /* main.m in Sources */,
 			);
@@ -276,10 +306,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = WebApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = webapp.ios.itrydo.com.WebApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -289,10 +320,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = WebApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = webapp.ios.itrydo.com.WebApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -317,6 +349,7 @@
 				4198407E1EEEE6B300D21182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
